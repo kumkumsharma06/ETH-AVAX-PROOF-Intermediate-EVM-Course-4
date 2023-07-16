@@ -19,8 +19,13 @@
  function allows the contract owner to mint new tokens. It takes two parameters: the recipient's address (to) and the amount of tokens to be minted (amount). The onlyOwner modifier ensures that only the contract owner can call this function. The function then calls the inherited _mint function to create new tokens and assigns them to the specified address.
  * `transfer function`
  transfer function from the ERC20 contract. It allows token holders to transfer tokens to another address (to). It takes two parameters: the recipient's address (to) and the amount of tokens to be transferred (amount). The function calls the internal _transfer function (inherited from ERC20) to perform the actual token transfer and returns true if the transfer is successful.
- * `redeem function`
- function allows token holders to burn (destroy) their tokens. It takes one parameter: the amount of tokens to be burned (amount). The function calls the internal _burn function (inherited from ERC20Burnable) to burn the specified amount of tokens owned by the caller.
+ gameStore
+* `function DegenGame()` public pure returns (string memory)
+The gameStore function provides information about the available items in the in-game store. It returns a string with the options and their corresponding values. Players can choose from these items to redeem with their tokens.
+
+* `redeemTokens`
+function redeemTokens(uint choice) external payable
+The redeemTokens function allows players to redeem tokens for items in the in-game store. Players need to provide the choice parameter, representing the sequence number of the desired item to redeem. The function checks the player's token balance and verifies if it is sufficient for the selected item. If the conditions are met, it transfers the corresponding token value to the contract owner.
  * `balanceOf function`
  This function allows anyone to retrieve the token balance of a specific address (account). It overrides the balanceOf function inherited from ERC20 and returns the token balance of the specified address by calling the inherited balanceOf function using the super keyword.
  
